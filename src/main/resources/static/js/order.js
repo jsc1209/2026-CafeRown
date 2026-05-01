@@ -253,7 +253,7 @@ function startPayment(clientKey) {
     pointsToUse: useP                       // 0 이면 미사용
   };
 
-  fetch('/order/create', {
+  fetch((window.CTX || '') + '/order/create', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)

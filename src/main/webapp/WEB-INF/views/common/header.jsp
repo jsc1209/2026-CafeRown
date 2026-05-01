@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ui-dialog.css">
   <script src="${pageContext.request.contextPath}/js/ui-dialog.js"></script>
+  <script>window.CTX = '${pageContext.request.contextPath}';</script>
 </head>
 <body>
 <header class="site-header" id="site-header">
