@@ -262,7 +262,7 @@ function startPayment(clientKey) {
     // 비로그인(401) → alert 없이 로그인 페이지로 자동 이동, 원 페이지로 복귀 처리
     if (res.status === 401) {
       var redirectTo = encodeURIComponent(location.pathname + location.search);
-      location.href = '/member/login?redirect=' + redirectTo;
+      location.href = (window.CTX || '') + '/member/login?redirect=' + redirectTo;
       return null;
     }
     return res.json().then(function(data) { return { data: data, status: res.status }; });
@@ -274,7 +274,7 @@ function startPayment(clientKey) {
     // 일부 환경에서는 200 + {error:"로그인이 필요합니다."} 로 내려올 수도 있음
     if (data && data.error === '로그인이 필요합니다.') {
       var redirectTo = encodeURIComponent(location.pathname + location.search);
-      location.href = '/member/login?redirect=' + redirectTo;
+      location.href = (window.CTX || '') + '/member/login?redirect=' + redirectTo;
       return;
     }
 

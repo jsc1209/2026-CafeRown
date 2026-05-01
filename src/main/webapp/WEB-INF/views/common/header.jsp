@@ -11,7 +11,11 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ui-dialog.css">
   <script src="${pageContext.request.contextPath}/js/ui-dialog.js"></script>
-  <script>window.CTX = '${pageContext.request.contextPath}';</script>
+  <script>
+    window.CTX = '${pageContext.request.contextPath}';
+    window.contextPath = window.CTX;
+    window.ctxPath = window.CTX;
+  </script>
 </head>
 <body>
 <header class="site-header" id="site-header">
