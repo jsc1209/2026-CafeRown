@@ -65,13 +65,16 @@
   align-items: start;
 }
 
-/* 알림은 그리드 밖에서 전체 너비로 — JSP 구조상 패널 내부에 위치하므로 별도 처리 불필요 */
+/* 알림은 mp-body(2열 grid) 직속이라 grid-column: 1/-1 로 행 전체를 점유시켜야 함.
+   미설정 시 알림이 200px 사이드바 컬럼에 들어가 탭/패널 레이아웃 전체가 깨짐
+   (정보 수정·비밀번호 변경 후 successMsg flash 시 본문이 좁은 컬럼으로 짜부라지는 버그). */
 .mp-alert {
   padding: .8rem 1rem;
   font-size: .875rem;
   margin-bottom: 1.75rem;
   display: flex; align-items: center; gap: .5rem;
   border-radius: 0;
+  grid-column: 1 / -1;
 }
 .mp-alert--success {
   background: #f0fdf4; color: #166534;

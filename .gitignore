@@ -7,6 +7,8 @@ target/
 .idea/
 *.iml
 .vscode/
+.metals/
+.bloop/
 .DS_Store
 
 # 환경변수 (비밀값) — Git에 올리지 말 것
