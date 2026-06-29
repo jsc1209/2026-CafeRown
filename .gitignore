@@ -1,0 +1,40 @@
+# ── 모노레포 공통 무시 규칙 ──
+# 각 하위 프로젝트(2026-CafeRown/, 2026-CafeRown2/)는 자체 .gitignore 도 가집니다.
+
+# 빌드 결과물
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# 로그
+*.log
+logs/
+
+# IDE / 에디터
+.idea/
+*.iml
+.vscode/
+.metals/
+.bloop/
+.ai/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 환경변수 / 비밀값
+.env
+*.env
+.env.local
+.env.*.local
+application-local.properties
+application-local*.properties
+
+# 편집 중 백업 파일
+*.bak
+*.bak2
+*.bak3
+*.swp
+*.swo
