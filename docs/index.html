@@ -196,6 +196,12 @@
   .face .specs span{font-family:var(--mono);font-size:.68rem;padding:.28rem .6rem;border-radius:6px;
     border:1px solid var(--line);color:var(--muted)}
   .face-back .specs span{border-color:rgba(200,169,126,.3);color:#C9B9A6}
+  .face-sample{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;font-size:.86rem;font-weight:500;
+    padding:.7rem 1.3rem;border-radius:999px;transition:transform .25s var(--ease),box-shadow .25s,background .25s,color .25s}
+  .face-front .face-sample{background:var(--espresso-700);color:var(--cream)}
+  .face-front .face-sample:hover{transform:translateY(-2px);background:var(--gold-deep);box-shadow:0 12px 26px -12px rgba(58,35,20,.6)}
+  .face-back .face-sample{background:var(--gold);color:var(--espresso-900)}
+  .face-back .face-sample:hover{transform:translateY(-2px);background:var(--gold-bright);box-shadow:0 12px 28px -10px rgba(200,169,126,.55)}
 
   /* 가운데 솔기 + 원두 */
   .seam{position:absolute;top:0;bottom:0;left:50%;width:2px;transform:translateX(-50%);
@@ -393,6 +399,7 @@
           <li>Groq AI 챗봇 안내원 ‘아메리’</li>
         </ul>
         <div class="specs"><span>Java 21</span><span>Docker · nginx</span><span>WAR</span></div>
+        <a class="face-sample" href="sample-rowncafe.html">🖥️ 메인 페이지 샘플 보기 →</a>
       </div>
 
       <div class="face face-back">
@@ -406,6 +413,7 @@
           <li>신고 처리 · 직원 권한 관리</li>
         </ul>
         <div class="specs"><span>Java 21</span><span>BCrypt</span><span>WAR</span></div>
+        <a class="face-sample" href="sample-brewcrm.html">🖥️ 관리자 화면 샘플 보기 →</a>
       </div>
 
       <div class="seam"></div>

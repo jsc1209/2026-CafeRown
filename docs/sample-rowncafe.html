@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ROWNCafe — 메인 페이지 샘플 · 로운</title>
+<meta name="description" content="ROWNCafe 고객용 메인 페이지 정적 샘플 — 실제 화면을 백엔드 없이 미리보기로 재현했습니다." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --espresso-950:#140B05; --espresso-900:#1A0F07; --espresso-800:#2A1A0E;
+    --espresso-700:#3B2314; --espresso-600:#5C3D2E;
+    --gold:#C8A97E; --gold-bright:#E0C9A6; --gold-deep:#A07850;
+    --cream:#FAF7F2; --beige:#EDE5DA; --line:#D4C4B0; --muted:#8C7B6E;
+    --serif:'Noto Serif KR',serif; --sans:'Noto Sans KR',sans-serif;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,.5vw+.7rem,18px);scroll-behavior:smooth}
+  body{font-family:var(--sans);background:var(--cream);color:var(--espresso-700);line-height:1.7;-webkit-font-smoothing:antialiased}
+  img,svg{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--gold);color:var(--espresso-900)}
+
+  /* ── 데모 안내 바 ── */
+  .demobar{
+    position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:center;gap:1rem;
+    flex-wrap:wrap;padding:.5rem 1rem;font-size:.76rem;letter-spacing:.02em;
+    background:var(--espresso-950);color:var(--gold-bright);border-bottom:1px solid rgba(200,169,126,.25)}
+  .demobar b{color:#fff;font-weight:500}
+  .demobar a{display:inline-flex;align-items:center;gap:.35rem;font-weight:500;color:var(--cream);
+    border:1px solid rgba(200,169,126,.5);border-radius:999px;padding:.2rem .7rem;transition:background .2s}
+  .demobar a:hover{background:rgba(200,169,126,.18)}
+
+  /* ── 헤더 ── */
+  .site-header{position:sticky;top:35px;z-index:90;background:rgba(250,247,242,.9);
+    backdrop-filter:blur(12px) saturate(140%);border-bottom:1px solid var(--line)}
+  .header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;
+    padding:.85rem clamp(1rem,3vw,2rem)}
+  .header-logo{font-family:var(--serif);font-weight:700;font-size:1.5rem;letter-spacing:.1em;color:var(--espresso-700)}
+  .header-nav{display:flex;align-items:center;gap:1.5rem}
+  .nav-link{font-size:.86rem;color:var(--espresso-600);transition:color .2s;position:relative}
+  .nav-link:hover{color:var(--gold-deep)}
+  .nav-auth{display:flex;align-items:center;gap:.9rem;margin-left:.6rem}
+  .btn-register{font-size:.82rem;background:var(--espresso-700);color:var(--cream);padding:.45rem 1rem;border-radius:999px;transition:background .2s}
+  .btn-register:hover{background:var(--gold-deep)}
+  @media(max-width:880px){.header-nav .nav-link:not(.keep){display:none}.nav-auth{margin-left:0}}
+
+  /* ── 히어로 ── */
+  .hero{position:relative;min-height:88vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 75% 10%,rgba(92,61,46,.5),transparent 55%),
+      linear-gradient(155deg,var(--espresso-950),var(--espresso-800) 55%,var(--espresso-700));}
+  .hero::after{content:"";position:absolute;inset:0;opacity:.05;mix-blend-mode:overlay;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .hero-inner{position:relative;z-index:2;padding:2rem 1.5rem}
+  .hero-eyebrow{font-size:.68rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);
+    display:inline-flex;align-items:center;gap:.8rem;margin-bottom:1.4rem}
+  .hero-eyebrow::before,.hero-eyebrow::after{content:"";width:32px;height:1px;background:rgba(200,169,126,.5)}
+  .hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(4rem,14vw,8.5rem);line-height:.95;color:var(--cream);letter-spacing:.04em}
+  .hero h1 em{font-style:normal;color:var(--gold)}
+  .hero .sub-ko{font-family:var(--serif);font-size:clamp(1.1rem,2.6vw,1.7rem);color:var(--gold-bright);margin:1.4rem 0 .3rem}
+  .hero .sub-en{font-size:.8rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(224,201,166,.7)}
+  .hero-cta{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;margin-top:2.4rem}
+  .cta{padding:.8rem 1.7rem;border-radius:999px;font-size:.88rem;font-weight:500;letter-spacing:.06em;transition:transform .25s var(--ease),background .25s}
+  .cta-fill{background:var(--gold);color:var(--espresso-900)}
+  .cta-fill:hover{transform:translateY(-2px);background:var(--gold-bright)}
+  .cta-ghost{border:1px solid rgba(200,169,126,.5);color:var(--cream)}
+  .cta-ghost:hover{transform:translateY(-2px);background:rgba(200,169,126,.12)}
+
+  /* ── 마퀴 ── */
+  .strip{background:var(--espresso-900);overflow:hidden;padding:.9rem 0;border-block:1px solid rgba(200,169,126,.18)}
+  .strip-inner{display:flex;gap:2rem;white-space:nowrap;width:max-content;animation:marquee 28s linear infinite}
+  .strip-item{font-family:var(--serif);font-size:1rem;color:var(--gold-bright);letter-spacing:.05em}
+  .strip-dot{color:var(--gold-deep)}
+  @keyframes marquee{to{transform:translateX(-50%)}}
+
+  .wrap{max-width:1200px;margin:0 auto;padding-inline:clamp(1rem,4vw,2rem)}
+  .eyebrow{font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-deep);font-weight:700}
+
+  /* ── 스토리 ── */
+  .story{padding:clamp(4rem,8vw,6.5rem) 0}
+  .story-grid{display:grid;grid-template-columns:.85fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+  .story-img{position:relative;aspect-ratio:4/5;border-radius:18px;overflow:hidden;
+    background:linear-gradient(150deg,var(--espresso-600),var(--espresso-900));display:grid;place-items:center}
+  .story-img .cupmark{font-size:5rem;opacity:.55}
+  .story-img .badge{position:absolute;right:-14px;bottom:24px;background:var(--gold);color:var(--espresso-900);
+    font-family:var(--serif);font-weight:700;font-size:.74rem;line-height:1.3;text-align:center;padding:.9rem 1rem;border-radius:12px;letter-spacing:.06em}
+  .story h2{font-family:var(--serif);font-weight:700;font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.25;margin:1rem 0 1.2rem}
+  .story h2 em{font-style:normal;color:var(--gold-deep)}
+  .story p.desc{color:var(--muted);margin-bottom:1.8rem;max-width:48ch}
+  .feat{display:flex;gap:.9rem;align-items:flex-start;padding:.8rem 0;border-top:1px solid var(--line)}
+  .feat-ico{font-size:1.5rem;flex:0 0 auto}
+  .feat-t{font-family:var(--serif);font-weight:600;font-size:1.02rem}
+  .feat-d{font-size:.85rem;color:var(--muted)}
+  .btn-dark{display:inline-block;margin-top:1.4rem;background:var(--espresso-700);color:var(--cream);
+    padding:.7rem 1.5rem;border-radius:999px;font-size:.86rem;transition:background .2s}
+  .btn-dark:hover{background:var(--gold-deep)}
+  @media(max-width:820px){.story-grid{grid-template-columns:1fr}.story-img{max-width:380px;margin-inline:auto}}
+
+  /* ── 메뉴 미리보기 ── */
+  .menu{padding:clamp(4rem,8vw,6.5rem) 0;background:linear-gradient(180deg,#F4ECE1,var(--cream))}
+  .sec-head{text-align:center;margin-bottom:3rem}
+  .sec-head h2{font-family:var(--serif);font-weight:700;font-size:clamp(1.8rem,4vw,2.7rem);margin:.6rem 0 .3rem}
+  .sec-head .sub{font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted)}
+  .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.2rem}
+  .mcard{background:#FFFEFB;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s}
+  .mcard:hover{transform:translateY(-5px);box-shadow:0 22px 44px -24px rgba(58,35,20,.45)}
+  .mcard-img{aspect-ratio:5/4;display:grid;place-items:center;font-size:2.6rem;
+    background:linear-gradient(150deg,var(--beige),#DFC9AE)}
+  .mcard-body{padding:1.1rem 1.2rem 1.3rem}
+  .mcard h4{font-family:var(--serif);font-weight:600;font-size:1.1rem;margin-bottom:.1rem}
+  .mcard .en{font-size:.72rem;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:.7rem}
+  .mcard .row{display:flex;align-items:center;justify-content:space-between}
+  .mcard .price{font-family:var(--serif);font-weight:700;font-size:1.05rem;color:var(--espresso-700)}
+  .temp{display:flex;gap:.3rem}
+  .temp span{font-size:.62rem;font-weight:700;letter-spacing:.04em;padding:.18rem .45rem;border-radius:5px}
+  .temp .h{background:#F3D9CE;color:#9A3F22}
+  .temp .i{background:#D7E7F0;color:#27617A}
+
+  /* ── 멤버십 띠 ── */
+  .memb{padding:clamp(3.5rem,7vw,5.5rem) 0;
+    background:radial-gradient(80% 120% at 50% 0%,rgba(92,61,46,.5),transparent 60%),linear-gradient(160deg,var(--espresso-900),var(--espresso-950));color:var(--cream)}
+  .memb-inner{text-align:center;max-width:640px;margin:0 auto}
+  .memb h2{font-family:var(--serif);font-weight:700;font-size:clamp(1.7rem,3.6vw,2.4rem);margin:.7rem 0 1rem}
+  .memb p{color:#C9B9A6;margin-bottom:1.8rem}
+  .tiers{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
+  .tier{font-family:var(--serif);font-size:.84rem;padding:.5rem 1.1rem;border-radius:999px;border:1px solid rgba(200,169,126,.4)}
+  .tier.s{color:#D8D8D8}.tier.g{color:var(--gold-bright)}.tier.v{color:#dd99ff;border-color:rgba(160,80,200,.5)}
+
+  /* ── 푸터 ── */
+  .footer{background:var(--espresso-950);color:#B6A593;padding:3rem 0 2rem}
+  .footer .top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;
+    padding-bottom:1.6rem;border-bottom:1px solid rgba(200,169,126,.18)}
+  .footer .logo{font-family:var(--serif);font-weight:700;font-size:1.6rem;letter-spacing:.12em;color:var(--cream)}
+  .footer .links{display:flex;gap:1.4rem;flex-wrap:wrap;font-size:.84rem}
+  .footer .bottom{padding-top:1.3rem;font-size:.74rem;color:var(--muted)}
+
+  /* ── AI 챗봇 위젯 (아메리) ── */
+  .chatbot{position:fixed;right:1.4rem;bottom:1.4rem;z-index:95;width:min(330px,calc(100vw - 2rem));
+    background:#FFFEFB;border:1px solid var(--line);border-radius:18px;overflow:hidden;
+    box-shadow:0 24px 60px -20px rgba(58,35,20,.5);transform-origin:bottom right}
+  .cb-head{display:flex;align-items:center;gap:.7rem;padding:.9rem 1.1rem;
+    background:linear-gradient(135deg,var(--espresso-700),var(--espresso-900));color:var(--cream)}
+  .cb-ava{width:34px;height:34px;border-radius:50%;background:var(--gold);display:grid;place-items:center;font-size:1.1rem;flex:0 0 auto}
+  .cb-name{font-family:var(--serif);font-weight:600;font-size:.96rem;line-height:1.1}
+  .cb-stat{font-size:.66rem;color:var(--gold-bright)}
+  .cb-stat::before{content:"●";color:#7BC47B;margin-right:.3rem;font-size:.6rem}
+  .cb-body{padding:1rem;display:flex;flex-direction:column;gap:.7rem;background:#FBF7F1;max-height:230px;overflow:auto}
+  .bubble{font-size:.82rem;line-height:1.55;padding:.6rem .8rem;border-radius:12px;max-width:85%}
+  .bot{align-self:flex-start;background:#fff;border:1px solid var(--line);border-bottom-left-radius:4px}
+  .me{align-self:flex-end;background:var(--gold);color:var(--espresso-900);border-bottom-right-radius:4px}
+  .bot a{color:var(--gold-deep);text-decoration:underline}
+  .cb-input{display:flex;gap:.5rem;padding:.7rem .8rem;border-top:1px solid var(--line);background:#fff}
+  .cb-input input{flex:1;border:1px solid var(--line);border-radius:999px;padding:.5rem .9rem;font-size:.8rem;font-family:inherit;background:var(--cream)}
+  .cb-input button{background:var(--espresso-700);color:var(--cream);border:0;border-radius:999px;padding:0 1rem;font-size:.78rem;font-family:inherit;cursor:pointer}
+  @media(max-width:520px){.chatbot{right:.7rem;bottom:.7rem}}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="demobar">
+  <span>☕ <b>ROWNCafe 고객용 메인 페이지</b> · 정적 데모 샘플 (실제 동작은 백엔드 필요)</span>
+  <a href="index.html">← 쇼케이스로 돌아가기</a>
+</div>
+
+<!-- 헤더 -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#top" class="header-logo">로운</a>
+    <nav class="header-nav">
+      <a href="#top" class="nav-link keep">홈</a>
+      <a href="#story" class="nav-link">소개</a>
+      <a href="#menu" class="nav-link">메뉴</a>
+      <a href="#" class="nav-link">게시판</a>
+      <a href="#" class="nav-link">AI 상담</a>
+      <a href="#" class="nav-link">문의</a>
+      <a href="#" class="nav-link">FAQ</a>
+      <div class="nav-auth">
+        <a href="#" class="nav-link keep">로그인</a>
+        <a href="#" class="btn-register">회원가입</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- 히어로 -->
+<section class="hero" id="top">
+  <div class="hero-inner reveal in">
+    <span class="hero-eyebrow">Rowoon Cafe · Since 2025</span>
+    <h1>로<em>운</em></h1>
+    <p class="sub-ko">우리만의 방식으로 꽃을 피우다</p>
+    <p class="sub-en">Our Own Way to Bloom</p>
+    <div class="hero-cta">
+      <a href="#menu" class="cta cta-fill">View Menu</a>
+      <a href="#story" class="cta cta-ghost">Our Story</a>
+    </div>
+  </div>
+</section>
+
+<!-- 마퀴 -->
+<div class="strip" aria-hidden="true">
+  <div class="strip-inner">
+    <span class="strip-item">Premium Coffee</span><span class="strip-dot">✦</span>
+    <span class="strip-item">로운카페</span><span class="strip-dot">✦</span>
+    <span class="strip-item">Crafted Experiences</span><span class="strip-dot">✦</span>
+    <span class="strip-item">정성을 다한 커피</span><span class="strip-dot">✦</span>
+    <span class="strip-item">Single Origin Roast</span><span class="strip-dot">✦</span>
+    <span class="strip-item">한 잔의 진심</span><span class="strip-dot">✦</span>
+    <span class="strip-item">Premium Coffee</span><span class="strip-dot">✦</span>
+    <span class="strip-item">로운카페</span><span class="strip-dot">✦</span>
+    <span class="strip-item">Crafted Experiences</span><span class="strip-dot">✦</span>
+    <span class="strip-item">정성을 다한 커피</span><span class="strip-dot">✦</span>
+    <span class="strip-item">Single Origin Roast</span><span class="strip-dot">✦</span>
+    <span class="strip-item">한 잔의 진심</span><span class="strip-dot">✦</span>
+  </div>
+</div>
+
+<!-- 스토리 -->
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <div class="story-img reveal">
+      <span class="cupmark">☕</span>
+      <span class="badge">SINCE<br>2025<br>ROWOON</span>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Our Story</span>
+      <h2>커피 한 잔에<br>담긴 <em>로운</em>의 정성</h2>
+      <p class="desc">세계 각지에서 엄선한 원두를 직접 로스팅하고, 숙련된 바리스타가 한 잔 한 잔 정성껏 추출합니다. 우리만의 방식으로 피어나는 특별한 경험을 드립니다.</p>
+      <div class="feat"><span class="feat-ico">☕</span><div><div class="feat-t">프리미엄 원두</div><div class="feat-d">에티오피아·콜롬비아·파나마 등 최상급 싱글 오리진</div></div></div>
+      <div class="feat"><span class="feat-ico">🏅</span><div><div class="feat-t">전문 바리스타</div><div class="feat-d">국내외 대회 수상 경력의 숙련된 바리스타</div></div></div>
+      <div class="feat"><span class="feat-ico">🌿</span><div><div class="feat-t">매일 신선 로스팅</div><div class="feat-d">당일 로스팅한 원두만 사용해 최상의 풍미 보장</div></div></div>
+      <a href="#" class="btn-dark">더 알아보기 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- 메뉴 미리보기 -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">ROWNCafe Collection</span>
+      <h2>시그니처 커피</h2>
+      <p class="sub">Explore · Taste · Connect</p>
+    </div>
+    <div class="menu-grid">
+      <div class="mcard reveal"><div class="mcard-img">☕</div><div class="mcard-body"><h4>아메리카노</h4><p class="en">Americano</p><div class="row"><div class="temp"><span class="h">HOT</span><span class="i">ICE</span></div><span class="price">4,500원</span></div></div></div>
+      <div class="mcard reveal"><div class="mcard-img">🥛</div><div class="mcard-body"><h4>카페라떼</h4><p class="en">Caffè Latte</p><div class="row"><div class="temp"><span class="h">HOT</span><span class="i">ICE</span></div><span class="price">5,000원</span></div></div></div>
+      <div class="mcard reveal"><div class="mcard-img">🍮</div><div class="mcard-body"><h4>카라멜마키아토</h4><p class="en">Caramel Macchiato</p><div class="row"><div class="temp"><span class="h">HOT</span><span class="i">ICE</span></div><span class="price">5,500원</span></div></div></div>
+      <div class="mcard reveal"><div class="mcard-img">❄️</div><div class="mcard-body"><h4>콜드브루</h4><p class="en">Cold Brew</p><div class="row"><div class="temp"><span class="i">ICE</span></div><span class="price">5,300원</span></div></div></div>
+      <div class="mcard reveal"><div class="mcard-img">🍦</div><div class="mcard-body"><h4>아인슈페너</h4><p class="en">Einspänner</p><div class="row"><div class="temp"><span class="i">ICE</span></div><span class="price">6,000원</span></div></div></div>
+      <div class="mcard reveal"><div class="mcard-img">☕</div><div class="mcard-body"><h4>에스프레소</h4><p class="en">Espresso</p><div class="row"><div class="temp"><span class="h">HOT</span></div><span class="price">3,500원</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 멤버십 -->
+<section class="memb">
+  <div class="wrap memb-inner reveal">
+    <span class="eyebrow" style="color:var(--gold)">Membership</span>
+    <h2>방문할수록 깊어지는 혜택</h2>
+    <p>매장 방문 횟수에 따라 등급이 자동으로 올라가고, 등급별 쿠폰 혜택을 드립니다.</p>
+    <div class="tiers">
+      <span class="tier">일반</span>
+      <span class="tier s">실버 · 월 3회</span>
+      <span class="tier g">골드 · 월 10회</span>
+      <span class="tier v">VIP · 월 30회</span>
+    </div>
+  </div>
+</section>
+
+<!-- 푸터 -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="logo">로운</div>
+        <p style="font-family:var(--serif);font-style:italic;color:var(--gold-bright);margin-top:.4rem">정성을 다한 커피</p>
+      </div>
+      <div class="links">
+        <a href="#story">소개</a><a href="#menu">메뉴</a><a href="#">멤버십</a><a href="index.html">← 쇼케이스</a>
+      </div>
+    </div>
+    <div class="bottom">© 2025 ROWNCafe · 정적 데모 샘플</div>
+  </div>
+</footer>
+
+<!-- AI 챗봇 위젯 -->
+<aside class="chatbot reveal in" aria-label="AI 챗봇 아메리">
+  <div class="cb-head">
+    <div class="cb-ava">🤖</div>
+    <div><div class="cb-name">아메리</div><div class="cb-stat">ROWNCafe AI 안내원</div></div>
+  </div>
+  <div class="cb-body">
+    <div class="bubble bot">안녕하세요! 로운카페 AI 안내원 아메리예요 ☕ 무엇을 도와드릴까요?</div>
+    <div class="bubble me">아메리카노 얼마예요?</div>
+    <div class="bubble bot">아메리카노는 <b>4,500원</b>입니다 ☕ 전체 메뉴는 <a href="#menu">메뉴 페이지</a>에서 확인하세요.</div>
+  </div>
+  <div class="cb-input">
+    <input type="text" placeholder="메시지를 입력하세요…" aria-label="메시지 입력" />
+    <button type="button">전송</button>
+  </div>
+</aside>
+
+<script>
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce && 'IntersectionObserver' in window){
+    const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  } else { document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')); }
+</script>
+</body>
+</html>

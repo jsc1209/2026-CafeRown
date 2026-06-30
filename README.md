@@ -12,19 +12,10 @@
 &nbsp;
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-3B2314?style=for-the-badge&logo=github&logoColor=white&labelColor=2A1A0E)](https://github.com/jsc1209/2026-CafeRown)
 
-<br />
-
-![Java](https://img.shields.io/badge/Java-21-orange?logo=openjdk&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.2-6DB33F?logo=springboot&logoColor=white)
-![MyBatis](https://img.shields.io/badge/MyBatis-3.0-DC382D)
-![MySQL](https://img.shields.io/badge/MySQL-8.x-4479A1?logo=mysql&logoColor=white)
-![Groq](https://img.shields.io/badge/Groq-LLaMA_3.3_70B-F55036)
-![TossPayments](https://img.shields.io/badge/TossPayments-연동-0064FF)
-
 </div>
 
 > 🌐 **데모 / 쇼케이스 페이지 → [jsc1209.github.io/2026-CafeRown](https://jsc1209.github.io/2026-CafeRown/)**
-> 두 앱의 기능·기술 스택·아키텍처를 한 페이지에서 소개합니다. *(GitHub Pages — Settings → Pages → Deploy from `main` → `/docs` 활성화 필요)*
+> 두 앱의 기능·아키텍처와 **고객용 메인 / 관리자 화면 샘플**을 한곳에서 볼 수 있습니다. *(GitHub Pages — Settings → Pages → Deploy from `main` → `/docs` 활성화 필요)*
 
 ---
 
