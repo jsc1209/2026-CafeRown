@@ -1,7 +1,7 @@
 # ☕ BREW CRM — 커피전문점 고객관리 시스템
 
 ## 기술 스택
-- **백엔드**: Spring Boot 3.2, Java 17
+- **백엔드**: Spring Boot 3.2, Java 21
 - **뷰**: JSP + JSTL (기존 프로젝트와 동일)
 - **ORM**: MyBatis
 - **DB**: MySQL

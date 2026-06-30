@@ -6,16 +6,16 @@ echo "  Brew CRM - 서버 설정 시작 (Ubuntu)"
 echo "============================================"
 
 # ──────────────────────────────────────────────
-# 1. Java 17 설치
+# 1. Java 21 설치
 # ──────────────────────────────────────────────
 echo ""
-echo "[1/6] Java 17 설치 확인..."
+echo "[1/6] Java 21 설치 확인..."
 if java -version 2>&1 | grep -q "17\|21"; then
     echo "  → Java 이미 설치됨. 건너뜀."
 else
-    echo "  → Java 17 설치 중..."
+    echo "  → Java 21 설치 중..."
     apt-get update -qq
-    apt-get install -y openjdk-17-jre-headless
+    apt-get install -y openjdk-21-jre-headless
     echo "  → Java 설치 완료."
 fi
 java -version

@@ -1,3 +1,33 @@
+<div align="center">
+
+# ☕ ROWN
+
+### 정성을 다한 커피, 그리고 그 뒤의 시스템
+
+고객용 카페 홈페이지 **ROWNCafe** + 사장·직원용 고객관리 **BREW CRM**을 담은 풀스택 카페 플랫폼 모노레포
+
+<br />
+
+[![🌐 Live Showcase](https://img.shields.io/badge/%F0%9F%8C%90_Live_Showcase-View_Demo-C8A97E?style=for-the-badge&labelColor=2A1A0E)](https://jsc1209.github.io/2026-CafeRown/)
+&nbsp;
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-3B2314?style=for-the-badge&logo=github&logoColor=white&labelColor=2A1A0E)](https://github.com/jsc1209/2026-CafeRown)
+
+<br />
+
+![Java](https://img.shields.io/badge/Java-21-orange?logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.2-6DB33F?logo=springboot&logoColor=white)
+![MyBatis](https://img.shields.io/badge/MyBatis-3.0-DC382D)
+![MySQL](https://img.shields.io/badge/MySQL-8.x-4479A1?logo=mysql&logoColor=white)
+![Groq](https://img.shields.io/badge/Groq-LLaMA_3.3_70B-F55036)
+![TossPayments](https://img.shields.io/badge/TossPayments-연동-0064FF)
+
+</div>
+
+> 🌐 **데모 / 쇼케이스 페이지 → [jsc1209.github.io/2026-CafeRown](https://jsc1209.github.io/2026-CafeRown/)**
+> 두 앱의 기능·기술 스택·아키텍처를 한 페이지에서 소개합니다. *(GitHub Pages — Settings → Pages → Deploy from `main` → `/docs` 활성화 필요)*
+
+---
+
 # 2026-CafeRown — 모노레포 (ROWNCafe + BREW CRM)
 
 기존에 두 개로 분리되어 있던 `2026-CafeRown`과 `2026-CafeRown2` 저장소를
@@ -25,7 +55,7 @@
 
 | 항목 | ROWNCafe (`2026-CafeRown/`) | BREW CRM (`2026-CafeRown2/`) |
 |------|------------------------------|-------------------------------|
-| Java | 21 | 17 |
+| Java | 21 | 21 |
 | Spring Boot | 3.2.0 | 3.2.x |
 | View | JSP + JSTL | JSP + JSTL |
 | ORM | MyBatis | MyBatis |
